@@ -113,9 +113,9 @@ public class DeviceServiceImpl extends BaseServiceImpl<DeviceDao, DeviceEntity> 
         String board = (String) cacheMap.get("board");
         String appVersion = (String) cacheMap.get("app_version");
         UserDetail user = SecurityUser.getUser();
-        if (user.getId() == null) {
-            throw new RenException(ErrorCode.USER_NOT_LOGIN);
-        }
+//        if (user.getId() == null) {
+//            throw new RenException(ErrorCode.USER_NOT_LOGIN);
+//        }
 
         Date currentTime = new Date();
         DeviceEntity deviceEntity = new DeviceEntity();
@@ -231,7 +231,8 @@ public class DeviceServiceImpl extends BaseServiceImpl<DeviceDao, DeviceEntity> 
         } else {
             // 如果设备不存在，则生成激活码
             DeviceReportRespDTO.Activation code = buildActivation(macAddress, deviceReport);
-            response.setActivation(code);
+            this.deviceActivation("772dea24abd8471ea9cdef74f708dca9", code.getCode());
+            return this.checkDeviceActive(macAddress, clientId, deviceReport);
         }
 
         return response;
