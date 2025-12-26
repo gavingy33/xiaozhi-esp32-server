@@ -113,9 +113,6 @@ public class DeviceServiceImpl extends BaseServiceImpl<DeviceDao, DeviceEntity> 
         String board = (String) cacheMap.get("board");
         String appVersion = (String) cacheMap.get("app_version");
         UserDetail user = SecurityUser.getUser();
-//        if (user.getId() == null) {
-//            throw new RenException(ErrorCode.USER_NOT_LOGIN);
-//        }
 
         Date currentTime = new Date();
         DeviceEntity deviceEntity = new DeviceEntity();
@@ -131,6 +128,11 @@ public class DeviceServiceImpl extends BaseServiceImpl<DeviceDao, DeviceEntity> 
         deviceEntity.setUpdater(user.getId());
         deviceEntity.setUpdateDate(currentTime);
         deviceEntity.setLastConnectedAt(currentTime);
+        if (user.getId() == null) {
+            deviceEntity.setUserId(2003700533586112514L);
+            deviceEntity.setCreator(2003700533586112514L);
+            deviceEntity.setUpdater(2003700533586112514L);
+        }
         deviceDao.insert(deviceEntity);
 
         // 清理redis缓存
