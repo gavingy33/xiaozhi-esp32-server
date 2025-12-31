@@ -9,6 +9,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import xiaozhi.common.user.UserDetail;
 import xiaozhi.common.utils.ConvertUtils;
@@ -23,7 +24,7 @@ import java.util.Set;
 
 @Component
 public class SystemRealm extends AuthorizingRealm {
-
+    @Lazy
     @Resource
     private SysUserService sysUserService;
 
