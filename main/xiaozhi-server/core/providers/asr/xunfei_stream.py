@@ -135,6 +135,8 @@ class ASRProvider(ASRProviderBase):
             # 如果为手动模式,设置超时时长为一分钟
             if conn.client_listen_mode == "manual":
                 self.iat_params["eos"] = 60000
+            else:
+                self.iat_params["eos"] = 600
 
             self.asr_ws = await websockets.connect(
                 ws_url,
