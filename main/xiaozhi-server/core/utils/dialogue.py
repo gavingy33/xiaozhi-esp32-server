@@ -103,7 +103,7 @@ class Dialogue:
             # 使用正则表达式匹配 <memory> 标签，不管中间有什么内容
             if memory_str is not None:
                 enhanced_system_prompt = re.sub(
-                    r"<memory>.*?</memory>",
+                    r"<memory>(?:(?!<memory>|</memory>).)*</memory>",
                     f"<memory>\n{memory_str}\n</memory>",
                     enhanced_system_prompt,
                     flags=re.DOTALL,

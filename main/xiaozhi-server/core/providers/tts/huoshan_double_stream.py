@@ -461,7 +461,7 @@ class TTSProvider(TTSProviderBase):
                     # 确保 `recv()` 运行在同一个 event loop
                     msg = await self.ws.recv()
                     res = self.parser_response(msg)
-                    self.print_response(res, "send_text res:")
+                    # self.print_response(res, "send_text res:")
 
                     # 优先处理连接级别事件
                     if res.optional.event == EVENT_ConnectionFinished:
