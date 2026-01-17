@@ -21,9 +21,9 @@ SEARCH_FROM_RAGFLOW_FUNCTION_DESC = {
 }
 
 
-@register_function(
-    "search_from_ragflow", SEARCH_FROM_RAGFLOW_FUNCTION_DESC, ToolType.SYSTEM_CTL
-)
+# @register_function(
+#     "search_from_ragflow", SEARCH_FROM_RAGFLOW_FUNCTION_DESC, ToolType.SYSTEM_CTL
+# )
 def search_from_ragflow(conn, question=None):
     # 确保字符串参数正确处理编码
     if question and isinstance(question, str):
